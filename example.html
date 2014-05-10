@@ -1,7 +1,25 @@
 <!DOCTYPE HTML>
 <html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script>
+        <script type="text/javascript" src="uslide.js"></script>
+    </head>
     <body>
-
-
+        <div id="mySlideshow" style="width:500px;height:500px;"></div>
+        <script type="text/javascript">
+            $('#mySlideshow').uSlide({
+                endpoint : "http://mf.staging.filemobile.com/services/json",
+                type: "GET",
+                dataType: "jsonp",
+                request: {
+                    vhost: 269,
+                    method: "media.getFiles"
+                },
+                response: {
+                    mediaObject: 'result.data',
+                    mediaURL: 'publicUrl'
+                }
+            });
+        </script>
     </body>
 </html>
