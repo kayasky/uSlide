@@ -6,8 +6,10 @@
     </head>
     <body>
         <div id="mySlideshow" style="width:500px;height:500px;"></div>
+        <div id="mySlideshow2" style="width:500px;height:500px;"></div>
         <script type="text/javascript">
-            $('#mySlideshow').uSlide({
+            /*
+$('#mySlideshow').uSlide({
                 endpoint : "http://mf.staging.filemobile.com/services/json",
                 type: "GET",
                 dataType: "jsonp",
@@ -22,6 +24,22 @@
                     mediaURLSuffix: '/15'
                 }
             });
+*/
+            
+            $('#mySlideshow2').uSlide({
+                endpoint : "https://api.instagram.com/v1/tags/toronto/media/recent",
+                type: "GET",
+                dataType: "jsonp",
+                request: {
+                    client_id: '7319969d3be54abd951563f5e4e835e8'
+                },
+                response: {
+                    mediaObject: 'data',
+                    mediaURL: 'images.standard_resolution.url',
+                    mediaURLSuffix: '/12'
+                }
+            });
+            
         </script>
     </body>
 </html>

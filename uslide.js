@@ -18,12 +18,13 @@ function uSlide() {
         });  
     }
     
-    window.parseMedia = function(data) {
-        mediaArray = data;
+    window.parseMedia = function(json) {
+        mediaArray = json;
         if (params.response.mediaObject.length > 0) {
             var mediaObjLoc = params.response.mediaObject.split('.');
             $.each(mediaObjLoc, function( index, value ) {
                 mediaArray = mediaArray[value];
+                //console.log(mediaArray);
             });
         }
         parseMediaPaths(mediaArray);
@@ -31,11 +32,11 @@ function uSlide() {
     
     var parseMediaPaths = function(media) {
         mediaPathsArray = media;
-        $.each(media, function( index, value ) {
+        $.each(mediaPathsArray, function( index, value ) {
             if (params.response.mediaURL.length > 0) {
                 var mediaURLLoc = params.response.mediaURL.split('.');
                 $.each(mediaURLLoc, function( i, val ) {
-                    mediaPathsArray[index] = value[val] + params.response.mediaURLSuffix;
+                    mediaPathsArray[index] = mediaPathsArray[index][val];
                 });
             }
         });
